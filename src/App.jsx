@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import CharacterFront from "./character/CharacterFront";
-import CharacterBack from "./character/CharacterBack";
+// import CharacterFront from "./character/CharacterFront";
+// import CharacterBack from "./character/CharacterBack";
+import CharacterFlip from "./character/CharacterFlip";
 import PageButton from "./Page Button/PageButton";
 import "./app.css";
+import img from "./pngegg.png";
 
 function App() {
   /********SETTING STATES********/
   let [allCharacters, setAllCharacters] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [count, setCount] = useState(1);
-  const [flip, setFlip] = useState(true);
+  // const [flip, setFlip] = useState(true);
 
   /********FETCHING DATA********/
   useEffect(() => {
@@ -34,61 +36,32 @@ function App() {
     setCount((prevCount) => prevCount - 1);
   };
 
-  /********SETTING FLIP********/
-
-  allCharacters = allCharacters.map((character) => {
-    return {
-      ...character,
-      type: flip,
-    };
-  });
-
-  let toggle = (event) => {
-    setAllCharacters((prevCharacters) => {
-      return prevCharacters.map((character) => {
-        if (character.id === event) {
-          return { ...character, type: setFlip(!flip) };
-        } else {
-          return character;
-        }
-      });
-    });
-    // console.log(event);
-  };
-  // console.log(allCharacters);
-
   /********RETURNING DATA********/
   return (
     <div className="App">
-      <h1>Rick And Morty: Characters</h1>
-      <br />
-      <br />
-      <br />
-      <h2>
+      <header>
+        <img src={img} alt="Rick and Morty" className="page-title" />
+        <br />
+        <br />
+        <h2 className="page-count">
+          CHARACTERS: Page {count} of {totalPages}
+        </h2>
+        <br />
+      </header>
+      <div className="card-area">
+        {allCharacters.map((character) => {
+          return (
+            <CharacterFlip
+              key={character.id}
+              characters={character}
+              num={character.id}
+            />
+          );
+        })}
+      </div>
+      <h2 className="page-count">
         Page {count} of {totalPages}
       </h2>
-      {allCharacters.map((character) => {
-        if (character.type === true) {
-          return (
-            <CharacterFront
-              key={character.id}
-              characters={character}
-              flipCard={toggle}
-              num={character.id}
-            />
-          );
-        } else {
-          return (
-            <CharacterBack
-              key={character.id}
-              characters={character}
-              flipCard={toggle}
-              num={character.id}
-            />
-          );
-        }
-      })}
-
       <PageButton
         nextPage={next}
         prevPage={prev}

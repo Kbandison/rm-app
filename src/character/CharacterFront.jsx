@@ -8,7 +8,7 @@ const CharacterFront = (props) => {
       onClick={() => props.flipCard(props.num)}
       key={props.num}
     >
-      <img src={props.characters.image} alt="" />
+      <img className="card-img" src={props.characters.image} alt="" />
       <div className="info-bar">
         <h2>Name: {props.characters.name}</h2>
         <h3>Gender: {props.characters.gender}</h3>

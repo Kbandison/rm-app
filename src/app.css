@@ -1,4 +1,33 @@
 .App {
   font-family: "Roboto", sans-serif;
   text-align: center;
+  color: #41b4c9;
+  display: inline-block;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("./img/1891007.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+  /* display: inline-block; */
+}
+
+.page-title {
+  width: 700px;
+}
+
+.card-area {
+  /* border: 10px solid white; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  /* width: 100%; */
+  align-items: center;
+  padding: 0 100px 0 100px;
 }

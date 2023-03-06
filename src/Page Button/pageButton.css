@@ -1,11 +1,32 @@
 .page-button {
   width: 80px;
   height: 40px;
-  border-radius: 5%;
-  border: 1px solid #000;
+  border-radius: 13px;
+  border: 1px solid #41b4c9;
   background-color: #fff;
   font-size: 20px;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(65, 180, 201, 0.2) inset,
+    0 0 10px rgba(191, 222, 66, 0.9);
+}
+
+.page-button:hover {
+  background-color: #41b4c9;
+  color: #fff;
+  border-color: #bfde42;
+  box-shadow: 0 0 10px rgba(65, 180, 201, 0.2) inset,
+    0 0 10px rgba(65, 180, 201, 0.9);
+  transition: 0.2s;
+}
+
+.page-button:active {
+  background-color: #bfde42;
+  color: #fff;
+  border-color: #41b4c9;
+  box-shadow: 0 0 10px rgba(65, 180, 201, 0.2) inset,
+    0 0 10px rgba(65, 180, 201, 0.9);
+  width: 70px;
+  transition: 0.2s;
 }
 
 .page-button-section {
