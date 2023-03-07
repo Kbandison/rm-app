@@ -8,32 +8,31 @@ import img from "./pngegg.png";
 
 function App() {
   /********SETTING STATES********/
-  let [allCharacters, setAllCharacters] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
-  const [count, setCount] = useState(1);
-  // const [flip, setFlip] = useState(true);
+  let [allCharacters, setAllCharacters] = useState([]); //SETTING ALL CHARACTERS TO AN EMPTY ARRAY, WHICH WILL BE REPLACED BY THE CHARACTER DATA FROM THE API
+  const [totalPages, setTotalPages] = useState(0); //SETTING THE TOTAL PAGES TO 0 AS A PLACEHOLDER, WHICH WILL BE REPLACED BY TOTAL PAGES IN THE API
+  const [count, setCount] = useState(1); //SETTING THE COUNT TO 1, SO THAT THE PAGE STARTS AT 1
 
   /********FETCHING DATA********/
   useEffect(() => {
     async function getAllCharacters() {
       let response = await fetch(
-        `https://rickandmortyapi.com/api/character?page=${count}`
+        `https://rickandmortyapi.com/api/character?page=${count}` //FETCHING DATA FROM THE API, AND SETTING THE PAGE TO THE COUNT STATE
       );
       let data = await response.json();
-      setAllCharacters(data.results);
-      setTotalPages(data.info.pages);
+      setAllCharacters(data.results); //SET ALL CHARACTERS TO THE RESULTS OF THE API
+      setTotalPages(data.info.pages); //SET TOTAL PAGES TO GET THE TOATL NUMBER OF PAGES
     }
 
     getAllCharacters();
-  }, [count]);
+  }, [count]); //SETTING THE COUNT AS A DEPENDENCY, SO THAT THE PAGE WILL CHANGE WHEN THE COUNT CHANGES
 
   /********SETTING NEXT AND PREVIOUS BUTTONS********/
   let next = () => {
-    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => prevCount + 1); //SETTING THE COUNT TO INCREASE BY 1
   };
 
   let prev = () => {
-    setCount((prevCount) => prevCount - 1);
+    setCount((prevCount) => prevCount - 1); //SETTING THE COUNT TO DECREASE BY 1
   };
 
   /********RETURNING DATA********/

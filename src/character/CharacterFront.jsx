@@ -5,7 +5,7 @@ const CharacterFront = (props) => {
   return (
     <div
       className="character-card"
-      onClick={() => props.flipCard(props.num)}
+      onClick={() => props.flipCard(props.num)} //SWITCHES THE BOOLEAN OF EACH CARD BASED ON THE ID OF THE CARD
       key={props.num}
     >
       <img className="card-img" src={props.characters.image} alt="" />
